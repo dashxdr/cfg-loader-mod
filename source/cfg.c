@@ -2448,6 +2448,7 @@ void cfg_set(char *name, char *val)
 	CFG_STR_LIST("cover_url_disc", CFG.cover_url_disc);
 	CFG_STR_LIST("cover_url_full", CFG.cover_url_full);
 	CFG_STR_LIST("cover_url_hq", CFG.cover_url_hq);
+	CFG_STR("geckocodes_url", CFG.geckocodes_url);
 	// download options
 	cfg_bool("download_all_styles", &CFG.download_all);
 	cfg_map("download_id_len", "4", &CFG.download_id_len, 4);

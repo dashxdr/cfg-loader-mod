@@ -349,6 +349,7 @@ bool Download_Cheats_TXT(char *id)
 	char filepath[200];
 	//char *url_base = "http://www.usbgecko.com/codes/codes";
 	char *url_base = "http://www.geckocodes.org/codes";
+	if(strlen(CFG.geckocodes_url)) url_base=CFG.geckocodes_url;
 	char url[200];
 	struct block file;
 	FILE *f;

@@ -357,6 +357,7 @@ struct CFG
     int home;
 	int debug;
 	int debug_gecko;
+	char geckocodes_url[1000];
 	int time_launch;
 	int device;
 	char partition[16];

@@ -245,7 +245,12 @@ struct block downloadfile_fname(const char *url, const char *fname)
 	char domain[domainlength + 1];
 	strncpy(domain, url + strlen("http://"), domainlength);
 	domain[domainlength] = '\0';
-	
+	int port = 80;
+	char *colon = strchr(domain, ':');
+	if(colon) {
+		*colon = 0;
+		port = atoi(colon+1);
+	}
 	//Parsing of the URL is done, start making an actual connection
 	u32 ipaddress = getipbynamecached(domain);
 	
@@ -257,7 +262,7 @@ struct block downloadfile_fname(const char *url, const char *fname)
 	}
 
 
-	s32 connection = server_connect(ipaddress, 80);
+	s32 connection = server_connect(ipaddress, port);
 	
 	if(connection < 0) {
 		printf(gt("Error establishing connection"));
