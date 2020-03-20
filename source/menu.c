@@ -2409,8 +2409,9 @@ int Menu_Boot_Options(struct discHdr *header, bool disc) {
 		if (buttons & CFG.button_confirm.mask) {
 			CFG.confirm_start = 0;
 			Music_Pause();
-			Menu_Boot(disc);
-			break;
+			return disc ? 9992 : 9993;
+//			Menu_Boot(disc); // (DA) FUCKING RECURSION
+//			break;
 		}
 		if (buttons & CFG.button_save.mask) {
 			bool ret;
@@ -2773,18 +2774,20 @@ int Menu_Global_Options()
 	return 0;
 }
 
-void Menu_Options()
+int Menu_Options()
 {
 	int ret = 1;
 	while(ret)
 	{
 		if (gameCnt) {
 			ret = Menu_Game_Options();
+			if(ret==9992 || ret==9993) return ret;
 		}
 		if (ret) {
 			ret = Menu_Global_Options();
 		}
 	}
+	return ret;
 }
 
 bool go_gui = false;
@@ -4349,6 +4352,7 @@ void FmtGameInfoLong(u8 *id, int cols, char *game_desc, int size)
 
 void Menu_Boot(bool disc)
 {
+restart:
 	/* Clear console */
 	if (!CFG.direct_launch) {
 		Con_Clear();
@@ -4601,8 +4605,13 @@ L_repaint:
 		return;
 	}
 	if (buttons & CFG.button_other.mask) {
-		if (disc) Menu_Boot_Options(header, 1);
-		else Menu_Options();
+		if (disc) {
+			Menu_Boot_Options(header, 1);
+		} else {
+			int res = Menu_Options();
+			if(res==9992) {disc=true;goto restart;}
+			if(res==9993) {disc=false;goto restart;}
+		}
 		return;
 	}
 	// LEFT/RIGHT: prev/next game

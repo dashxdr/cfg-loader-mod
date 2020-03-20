@@ -27,7 +27,7 @@ void Menu_Boot(bool disc);
 int Menu_Boot_Options(struct discHdr *header, bool disc);
 s32 __Menu_GetEntries(void);
 void Menu_Loop(void);
-void Menu_Options(void);
+int Menu_Options(void);
 void Menu_Partition(bool must_select);
 void Handle_Home();
 void Theme_Update();
