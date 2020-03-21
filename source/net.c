@@ -53,7 +53,7 @@ int Net_Init(char *ip){
 		char myIP[16];
 
 		net_top = result;
-		if (if_config(myIP, NULL, NULL, true) < 0)
+		if (if_config(myIP, NULL, NULL, true, 100) < 0)
 		{
 			printf("Error reading IP address.");
 			return false;

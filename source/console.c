@@ -102,7 +102,7 @@ const unsigned int color_table[] =
 struct unifont_header *unifont = NULL;
 u8 *unifont_glyph = NULL;
 
-inline u32 RGB8x2_TO_YCbYCr(u8 *c1, u8 *c2)
+static inline u32 RGB8x2_TO_YCbYCr(u8 *c1, u8 *c2)
 {
 	return PNGU_RGB8_TO_YCbYCr(c1[0], c1[1], c1[2], c2[0], c2[1], c2[2]);
 }

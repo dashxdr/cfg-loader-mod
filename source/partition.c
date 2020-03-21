@@ -423,7 +423,8 @@ s32 Partition_GetList(u32 device, PartList *plist)
 		} else {
 			io = &my_io_usbstorage_ro;
 		}
-		ret = ext2FindPartitions(io, &ext_part);
+//		ret = ext2FindPartitions(io, &ext_part);
+ret = 0;
 		if (ret > 0 && ext_part) {
 			for (i = 0; i < plist->num; i++) {
 				pinfo = &plist->pinfo[i];

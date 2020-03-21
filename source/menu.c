@@ -1536,7 +1536,7 @@ void Menu_Unlock() {
 				printf("*");
 				buf[i] = get_unlock_buttons(buttons);
 				i++;
-				if (stricmp(buf, CFG.unlock_password) == 0) {
+				if (strcasecmp(buf, CFG.unlock_password) == 0) {
 					unlocked = true;
 				}
 				if (i >= 10) break;

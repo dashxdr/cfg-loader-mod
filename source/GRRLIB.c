@@ -573,7 +573,7 @@ inline void GRRLIB_DrawTile_draw(f32 xpos, f32 ypos, GRRLIB_texImg tex, float de
     GX_LoadPosMtxImm (GXmodelView2D, GX_PNMTX0);
 }
 
-inline void GRRLIB_DrawTile_draw1(f32 xpos, f32 ypos, GRRLIB_texImg *tex, u32 color, int frame)
+static inline void GRRLIB_DrawTile_draw1(f32 xpos, f32 ypos, GRRLIB_texImg *tex, u32 color, int frame)
 {
     //f32 width, height;
 

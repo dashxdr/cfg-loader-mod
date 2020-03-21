@@ -90,7 +90,8 @@ ifneq ($(strip $(LIBAESND)),)
 LAESND  := -laesnd
 endif
 
-LIBS	:=	-lgrrlib -lfat -lntfs -lext2fs -lpng -ljpeg -lwiiuse -lbte -lmad -lmodplay -lasnd -logc -lm -lz
+LIBS	:=	-lgrrlib -lfat -lntfs  -lpng -ljpeg -lwiiuse -lbte -lmad -lmodplay -lasnd -logc -lm -lz
+#LIBS += -lext2fs
 
 
 #---------------------------------------------------------------------------------

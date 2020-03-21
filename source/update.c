@@ -312,12 +312,12 @@ int update_set(char *line)
 	if (opt && strchr(name, ' ') != NULL) opt = false;
 	if (opt)
 	{
-		if (stricmp("metaxml", name) == 0) {
+		if (strcasecmp("metaxml", name) == 0) {
 			strncat(meta_xml, val, sizeof(meta_xml)-1);
 			strncat(meta_xml, "\n", sizeof(meta_xml)-1);
 			return 0;
 		}
-		if (stricmp("release", name) == 0) {
+		if (strcasecmp("release", name) == 0) {
 			if (num_updates >= MAX_UPDATES) {
 				return 1;
 			}
@@ -332,16 +332,16 @@ int update_set(char *line)
 
 		if (num_updates <= 0) return 0;
 		u = &updates[num_updates-1]; 
-		if (stricmp("size", name) == 0) {
+		if (strcasecmp("size", name) == 0) {
 			int n;
 			if (sscanf(val, "%d", &n) == 1) {
 				if (n > 500000 && n < 5000000) {
 					u->size = n;
 				}
 			}
-		} else if (stricmp("date", name) == 0) {
+		} else if (strcasecmp("date", name) == 0) {
 			STRCOPY(u->date, val);
-		} else if (stricmp("url", name) == 0) {
+		} else if (strcasecmp("url", name) == 0) {
 			STRCOPY(u->url, val);
 		} else if (*u->url) {
 			// anything unknown after url is a comment till a new release line

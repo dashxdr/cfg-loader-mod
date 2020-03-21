@@ -236,12 +236,12 @@ int get_frag_list(u8 *id)
 					goto out;
 				}
 			} else if (wbfs_part_fs == PART_FS_EXT) {
-				ret = _EXT2_get_fragments(fname, &_frag_append, fs);
-				if (ret) {
-					printf("ERROR: ext getf: %d\n", ret);
-					ret_val = ret;
-					goto out;
-				}
+//				ret = _EXT2_get_fragments(fname, &_frag_append, fs);
+//				if (ret) {
+//					printf("ERROR: ext getf: %d\n", ret);
+//					ret_val = ret;
+//					goto out;
+//				}
 			} else {
 				printf("Unsupported FS %s %d!\n",
 						get_fs_name(wbfs_part_fs), wbfs_part_fs);
