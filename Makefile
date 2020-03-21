@@ -91,7 +91,7 @@ LAESND  := -laesnd
 endif
 
 LIBS	:=	-lgrrlib -lfat -lntfs  -lpng -ljpeg -lwiiuse -lbte -lmad -lmodplay -lasnd -logc -lm -lz
-#LIBS += -lext2fs
+LIBS += -lext2fs
 
 
 #---------------------------------------------------------------------------------

@@ -501,12 +501,12 @@ int MountFS(char *aname, int device, sec_t sector, int fstype, int verbose)
 
 	} else if (fstype == PART_FS_EXT) {
 
-//		// EXT MOUNT
-//		dbg_printf("ext2Mount(%s,%u)", name, sector);
-//		// readonly = 0; write = EXT2_FLAG_RW
-//		ret = ext2Mount(name, io, sector, page_count, page_size,
-//				(0 | EXT2_FLAG_64BITS | EXT2_FLAG_JOURNAL_DEV_OK));
-//		dbg_printf(" = %d\n", ret);
+		// EXT MOUNT
+		dbg_printf("ext2Mount(%s,%u)", name, sector);
+		// readonly = 0; write = EXT2_FLAG_RW
+		ret = ext2Mount(name, io, sector, page_count, page_size,
+				(0 | EXT2_FLAG_64BITS | EXT2_FLAG_JOURNAL_DEV_OK));
+		dbg_printf(" = %d\n", ret);
 
 	} else {
 		printf("Invalid fs type %d\n", fstype);
@@ -555,7 +555,7 @@ int UnmountFS(char *aname)
 	} else if (m->fstype == PART_FS_NTFS) {
 		ntfsUnmount(name, true);
 	} else if (m->fstype == PART_FS_EXT) {
-//		ext2Unmount(drive);
+		ext2Unmount(drive);
 	} else {
 		return -2;
 	}
