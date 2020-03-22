@@ -90,7 +90,8 @@ ifneq ($(strip $(LIBAESND)),)
 LAESND  := -laesnd
 endif
 
-LIBS	:=	-lgrrlib -lfat -lntfs -lext2fs -lpng -ljpeg -lwiiuse -lbte -lmad -lmodplay -lasnd -logc -lm -lz
+LIBS	:=	-lgrrlib -lfat -lntfs  -lpng -ljpeg -lwiiuse -lbte -lmad -lmodplay -lasnd -logc -lm -lz
+LIBS += -lext2fs
 
 
 #---------------------------------------------------------------------------------
@@ -154,13 +155,15 @@ export OUTPUT	:=	$(CURDIR)/$(TARGET)
 .PHONY: $(BUILD) 222 debug lang all clean tags
 
 #---------------------------------------------------------------------------------
-$(BUILD):
+$(BUILD): subdir
 	@[ -d $@ ] || mkdir -p $@
 	@echo
 	@echo $(CURDIR)
 	@echo Building $(TARGET) $(BUILD_FLAGS)
 	@grep _V_STR $(LIBOGC_INC)/ogc/libversion.h | cut -f2 -d'"'
 	@$(MAKE) --no-print-directory -C $(BUILD) -f $(CURDIR)/Makefile
+subdir:
+	@$(MAKE) -C lib all install
 
 222:
 	@$(MAKE) --no-print-directory BUILD_222=1

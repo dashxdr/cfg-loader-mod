@@ -144,7 +144,11 @@ GXRModeObj* vmodes[] = {
 	&TVPal524IntAa,
 	&TVPal528Int,
 	&TVPal528IntDf,
+#if DEVKITPPCVER >= 35
+	&TVPal576IntDfScale,
+#else
 	&TVPal574IntDfScale,
+#endif
 	&TVEurgb60Hz240Ds,
 	&TVEurgb60Hz240DsAa,
 	&TVEurgb60Hz240Int,
@@ -166,7 +170,12 @@ GXRModeObj* PAL2NTSC[]={
 	&TVPal524IntAa,			&TVNtsc480IntAa,
 	&TVPal528Int,			&TVNtsc480IntAa,
 	&TVPal528IntDf,			&TVNtsc480IntDf,
-	&TVPal574IntDfScale,	&TVNtsc480IntDf,
+#if DEVKITPPCVER >= 35
+	&TVPal576IntDfScale,
+#else
+	&TVPal574IntDfScale,
+#endif
+	&TVNtsc480IntDf,
 	&TVEurgb60Hz240Ds,		&TVNtsc240Ds,
 	&TVEurgb60Hz240DsAa,	&TVNtsc240DsAa,
 	&TVEurgb60Hz240Int,		&TVNtsc240Int,

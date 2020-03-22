@@ -12,6 +12,7 @@
 #include <malloc.h>
 #include <sys/types.h>
 #include <fcntl.h>
+#include <sys/param.h>
 
 #include "dir.h"
 #include "cfg.h"
@@ -2324,7 +2325,7 @@ bool cfg_set_gbl(char *name, char *val)
 			load_theme(val);
 			int i;
 			for (i=0; i<num_theme; i++) {
-				if (stricmp(val, theme_list[i]) == 0) {
+				if (strcasecmp(val, theme_list[i]) == 0) {
 					cur_theme = i;
 					break;
 				}
@@ -2749,7 +2750,7 @@ void cfg_parsearg(int argc, char **argv)
 		}
 		else if (argv[i][0] != '#') {
 			char *p = strrchr(argv[i], '.');
-			if (p && (stricmp(p, ".txt")==0 || stricmp(p,".cfg")==0)) {
+			if (p && (strcasecmp(p, ".txt")==0 || strcasecmp(p,".cfg")==0)) {
 				if (strchr(argv[i], ':')) {
 					// absolute path
 					cfg_parsefile(pathname, &cfg_set);
@@ -2812,7 +2813,7 @@ void settings_set(char *name, char *val)
 		if (strcmp(name, "profile_theme") == 0) {
 			int i;
 			for (i=0; i<num_theme; i++) {
-				if (stricmp(val, theme_list[i]) == 0) {
+				if (strcasecmp(val, theme_list[i]) == 0) {
 					CFG.profile_theme[profile_tag_index] = i;
 					break;
 				}
@@ -3250,11 +3251,11 @@ void get_theme_list()
 
 	if (!num_theme) return;
 	qsort(theme_list, num_theme, sizeof(*theme_list),
-			(int(*)(const void*, const void*))stricmp);
+			(int(*)(const void*, const void*))strcasecmp);
 	// define current
 	if (!*CFG.theme) return;
 	for (i=0; i<num_theme; i++) {
-		if (stricmp(CFG.theme, theme_list[i]) == 0) {
+		if (strcasecmp(CFG.theme, theme_list[i]) == 0) {
 			cur_theme = i;
 			strcopy(CFG.theme, theme_list[i], sizeof(CFG.theme));
 			break;

@@ -18,7 +18,7 @@ GRRLIB_texImg my_GRRLIB_LoadTextureJPG(const unsigned char my_jpg[]);
 void GRRLIB_prepareStencil(void);
 void GRRLIB_renderStencil_buf(GRRLIB_texImg *tx);
 int GRRLIB_stencilVal(int x, int y, GRRLIB_texImg tx);
-inline void GRRLIB_DrawImg_format(f32 xpos, f32 ypos, GRRLIB_texImg tex, u8 texFormat, float degrees, float scaleX, f32 scaleY, u32 color );
+//inline void GRRLIB_DrawImg_format(f32 xpos, f32 ypos, GRRLIB_texImg tex, u8 texFormat, float degrees, float scaleX, f32 scaleY, u32 color );
 
 //anti-alias routines
 GRRLIB_texImg GRRLIB_AAScreen2Texture();

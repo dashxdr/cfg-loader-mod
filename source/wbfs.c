@@ -833,7 +833,7 @@ int WBFS_GetDolList(u8 *discid, DOL_LIST *list)
 	for (i=1;i<count;i++) {
 		char * fname = fstfilename2(fst, i);
 		int len = strlen(fname);
-		if (len > 4 && stricmp(fname+len-4, ".dol") == 0) {
+		if (len > 4 && strcasecmp(fname+len-4, ".dol") == 0) {
 			if (list->num >= DOL_LIST_MAX) break;
 			STRCOPY(list->name[list->num], fname);
 			list->num++;

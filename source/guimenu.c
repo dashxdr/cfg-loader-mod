@@ -2473,7 +2473,7 @@ int handle_AdminUnlock(Widget *ww)
 		unlock_str[i] = '*';
 		unlock_buf[i] = get_unlock_buttons(winput.w_buttons);
 		i++;
-		if (stricmp(unlock_buf, CFG.unlock_password) == 0) {
+		if (strcasecmp(unlock_buf, CFG.unlock_password) == 0) {
 			Admin_Unlock(true);
 			//Gui_Refresh_List();
 			ww->closing = true;

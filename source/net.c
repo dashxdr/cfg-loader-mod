@@ -53,7 +53,13 @@ int Net_Init(char *ip){
 		char myIP[16];
 
 		net_top = result;
-		if (if_config(myIP, NULL, NULL, true) < 0)
+		int res;
+#if DEVKITPPCVER >= 35
+		res = if_config(myIP, NULL, NULL, true, 100);
+#else
+		res = if_config(myIP, NULL, NULL, true);
+#endif
+		if (res < 0)
 		{
 			printf("Error reading IP address.");
 			return false;

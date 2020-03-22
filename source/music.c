@@ -109,7 +109,7 @@ bool match_ext(char *name, char *ext)
 {
   if (strlen(name) < strlen(ext)) return false;
 	//dbg_printf("Music: match_ext: name=%s  ext=%s\n", name, ext);
-    return stricmp(name+strlen(name)-strlen(ext), ext) == 0;
+    return strcasecmp(name+strlen(name)-strlen(ext), ext) == 0;
 }
 
 //Creates the random music array (fist time through) and retrieves the
