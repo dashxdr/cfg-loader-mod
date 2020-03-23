@@ -9,4 +9,3 @@ install:
 
 clean:
 	for L in $(LIBS); do $(MAKE) -C $$L clean; done
-

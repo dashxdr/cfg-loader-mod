@@ -163,7 +163,8 @@ $(BUILD): subdir
 	@grep _V_STR $(LIBOGC_INC)/ogc/libversion.h | cut -f2 -d'"'
 	@$(MAKE) --no-print-directory -C $(BUILD) -f $(CURDIR)/Makefile
 subdir:
-	@$(MAKE) -C lib all install
+	@$(MAKE) -C lib all
+	@$(MAKE) -C lib install
 
 222:
 	@$(MAKE) --no-print-directory BUILD_222=1
@@ -191,6 +192,7 @@ clean:
 	@rm -fr $(BUILD) $(OUTPUT).elf $(OUTPUT).dol
 	@rm -fr $(BUILD)_222 $(OUTPUT)-222.elf $(OUTPUT)-222.dol
 	@rm -fr $(BUILD)_dbg $(OUTPUT)-dbg.elf $(OUTPUT)-dbg.dol
+	@$(MAKE) -C lib clean
 
 cleanall: clean
 	@rm -fr *.dol *.elf
